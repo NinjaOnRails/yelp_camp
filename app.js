@@ -14,11 +14,12 @@ var express        = require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
+    
+// console.log(process.env.DATABASEURL);
 
 // mongoose.connect("mongodb://localhost:27017/yelp_camp_v12Deployed", { useNewUrlParser: true });
-mongoose.connect("mongodb+srv://dbAdmin:Ya7iQY7YHWILkakf@yelpcamp-2sstm.mongodb.net/test?retryWrites=true", { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
 // mongodb+srv://dbAdmin:Ya7iQY7YHWILkakf@yelpcamp-2sstm.mongodb.net/test?retryWrites=true
-// mongodb://dbAdmin:Ya7iQY7YHWILkakf@yelpcamp-shard-00-00-2sstm.mongodb.net:27017,yelpcamp-shard-00-01-2sstm.mongodb.net:27017,yelpcamp-shard-00-02-2sstm.mongodb.net:27017/test?ssl=true&replicaSet=YelpCamp-shard-0&authSource=admin&retryWrites=true
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
